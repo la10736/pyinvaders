@@ -1,13 +1,12 @@
+import pygame
+import sys
 import os
-from pygame.rect import Rect
 
 __author__ = 'michele'
 
-import pygame
-import sys
 
 risorse = os.path.join("..", "risorse")
-fattore = 3
+fattore = 4
 base_altezza = 120
 base_larghezza = 160
 
@@ -20,27 +19,24 @@ pygame.init()
 
 schermo = pygame.display.set_mode(dimensioni_scehrmo)
 orologio = pygame.time.Clock()
-immagine_cannone = pygame.image.load(os.path.join(risorse, "cannone.png"))
-immagine_cannone = pygame.transform.rotozoom(immagine_cannone, 0, fattore)
-cannone = immagine_cannone.get_rect()
-""":type: pygame.rect.Rect"""
-cannone.centerx = larghezza / 2
-cannone.bottom = altezza
+cannone_immagine = pygame.image.load("cannone.png")
+cannone_rettamgolo = cannone_immagine.get_rect()
+cannone_rettamgolo.centerx = larghezza / 2
+cannone_rettamgolo.bottom = altezza
 
 pygame.display.set_caption('Space Invaders')
 pygame.mouse.set_visible(False)
 
 # set up sounds
-pygame.mixer.music.load(os.path.join(risorse, "quake.mp3"))
-
+pygame.mixer.music.load("quake.mp3")
+pygame.mixer.music.play(-1, 0.0)
 
 while True:
-    pygame.mixer.music.play(-1, 0.0)
+    orologio.tick(20)
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             sys.exit()
-    orologio.tick(20)
     schermo.fill(nero)
-    schermo.blit(immagine_cannone, cannone)
+    schermo.blit(cannone_immagine, cannone_rettamgolo)
 
     pygame.display.flip()
