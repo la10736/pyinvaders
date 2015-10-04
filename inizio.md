@@ -5,8 +5,8 @@ non la chiudiamo con il nostro cannone fermo in basso al centro e una musica di 
 
 ## Una bella finestra nera
 
-Per prima cosa creiamo semplicemente il campo di gioco che consiste in una finestra nera larga 640 pixels (punti) e
-alta 480.
+Per prima cosa creiamo semplicemente il campo di gioco che consiste in una finestra nera dal nome *Space Invaders* 
+larga 640 pixels (punti) e alta 480.
 
 ```python
 import pygame
@@ -17,6 +17,8 @@ larghezza = 640
 dimensioni_scehrmo = larghezza, altezza
 nero = 0, 0, 0
 pygame.init()
+
+pygame.display.set_caption('Space Invaders')
 
 schermo = pygame.display.set_mode(dimensioni_scehrmo)
 schermo.fill(nero)
@@ -85,11 +87,11 @@ Cioè per ogni **evento** che è successo si verifica se l'evento è una richies
 
 Quindi adesso il vostro gioco si chiude quando cercate di chiudere la finestra.
 
-## Disegnamo il cannone
+## Disegnamo il cannone in basso al centro
 
 Per disegnare il cannone bisogna leggere l'immagine del cannone, costruire un rettangolo grande come l'immagine e
-tutte le volte che vorremo disegnare il cannone posizioniamo il rettangolo sullo scermo e diciamo allo scrmo di
-riempire il rettangolo con quella immagine. Troppe parole: facciamo spazio al codice:
+tutte le volte che vorremo disegnare il cannone posizioniamo il rettangolo sullo schermo e diciamo allo schermo di
+riempire il rettangolo l'immagine. Troppe parole: facciamo spazio al codice:
 
 ```python
 cannone_immagine = pygame.image.load("cannone.png")
@@ -107,7 +109,7 @@ Per capire come si posizionano i rettangoli usate questo schema:
 ![Rettangolo](rettangolo.png)
 
 Ci sono anche altre proprietà del rettangolo, ma quelle segnate nel disegno bastano e avanzano per iniziare. Comunque
-dopo averlo impostato le ho stampate tutte:
+questo è il valore che hanno tutti gli attributi del rettangolo dopo averlo posizionato in basso al centro:
 
 ```
 cannone_rettamgolo x : 294
@@ -133,3 +135,26 @@ cannone_rettamgolo height : 32
 cannone_rettamgolo w : 52
 cannone_rettamgolo h : 32
 ```
+
+## Musica Maestro
+
+Vogliamo mettere un bel tappetino musicale alle nostre partite. Per fare questo è sufficiente caricare la musica 
+e madarla in play dicendogli di farla continuamente.
+
+```python
+pygame.mixer.music.load("quake.mp3")
+pygame.mixer.music.play(-1, 0.0)
+```
+
+`pygame.mixer.music` è lo speciale modulo che gestisce la musica di sottofondo e il primo argomento di `play()` è il 
+numero di volte che vogliamo riprodurre la canzone: `-1` signigica indefinitivamente.
+
+Se facciamo questo prima di iniziare il ciclo main di `pygame` allora la musica ci accomagnerà sempre.
+
+## Dove siamo adesso
+
+Ora il vostro programma dovrebbe essere molto simile a [questo](src/inizio.py). Abbiamo una finestra con il cannone in 
+basso al centro. Una musica inquietante ci accompagna e se chiudiamo la finestra il programma si chiude.
+
+* Prossimo: [Muoviamo e Spariamo](muovi.md)
+* Precedente: [README](README.md)

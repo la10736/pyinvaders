@@ -25,9 +25,7 @@ cannone_rettamgolo.centerx = larghezza / 2
 cannone_rettamgolo.bottom = altezza
 
 pygame.display.set_caption('Space Invaders')
-pygame.mouse.set_visible(False)
 
-# set up sounds
 pygame.mixer.music.load("quake.mp3")
 pygame.mixer.music.play(-1, 0.0)
 
