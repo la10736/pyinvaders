@@ -16,7 +16,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="rettangolo.svg">
+   sodipodi:docname="rettangolo.svg"
+   inkscape:export-filename="/home/michele/PycharmProjects/pyinvaders/risorse/Elaborazioni/rettangolo.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <marker
@@ -302,7 +305,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="327.69493"
+     inkscape:cx="308.19493"
      inkscape:cy="872.3682"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
