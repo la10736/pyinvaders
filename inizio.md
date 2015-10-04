@@ -100,6 +100,36 @@ cannone_rettamgolo.bottom = altezza
 ...
    # Prima di riempire il display
    schermo.blit(cannone_immagine, cannone_rettamgolo)
-
 ```
 
+Per capire come si posizionano i rettangoli usate questo schema:
+
+![Rettangolo](rettangolo.png)
+
+Ci sono anche altre proprietà del rettangolo, ma quelle segnate nel disegno bastano e avanzano per iniziare. Comunque
+dopo averlo impostato le ho stampate tutte:
+
+```
+cannone_rettamgolo x : 294
+cannone_rettamgolo y : 448
+cannone_rettamgolo top : 448
+cannone_rettamgolo left : 294
+cannone_rettamgolo bottom : 480
+cannone_rettamgolo right : 346
+cannone_rettamgolo topleft : (294, 448)
+cannone_rettamgolo bottomleft : (294, 480)
+cannone_rettamgolo topright : (346, 448)
+cannone_rettamgolo bottomright : (346, 480)
+cannone_rettamgolo midtop : (320, 448)
+cannone_rettamgolo midleft : (294, 464)
+cannone_rettamgolo midbottom : (320, 480)
+cannone_rettamgolo midright : (346, 464)
+cannone_rettamgolo center : (320, 464)
+cannone_rettamgolo centerx : 320
+cannone_rettamgolo centery : 464
+cannone_rettamgolo size : (52, 32)
+cannone_rettamgolo width : 52
+cannone_rettamgolo height : 32
+cannone_rettamgolo w : 52
+cannone_rettamgolo h : 32
+```
