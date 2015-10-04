@@ -1,4 +1,4 @@
-# Sfondo, musica e la nostra astronave
+# Sfondo, musica e il nostro cannone
 
 Eccoci davanti al foglo bianco, vediamo di rimepirlo. Vogliamo fare una bella finestra che resta aperta fino a quando 
 non la chiudiamo con il nostro cannone fermo in basso al centro e una musica di sottofondo.
