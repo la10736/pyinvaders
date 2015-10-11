@@ -26,10 +26,9 @@ alieno lancia una bomba a sua volta e la nostra astronave è meglio che non veng
 Man mano che gli alieni diminuiscono accelerano il loro passo e sparano sempre più veloce. 
 
 * Se gli alieni toccano terra o l'astronave vincono loro
-* Se gli alieni finiscono vinciamo noi e passiamo allo schermo successivo
+* Se gli alieni finiscono si ricostruiscono tutti e ricominciano l'invasione un po più veloce
 * Possiamo essere colpiti solo 3 volte in tutto e poi il gioco finisce
-* Ogni nuovo scermo inizia sempre un po più veloce
-* Ogni alieno colpito vale 100 punti
+* Ogni alieno colpito vale 10, 20 o 40 punti a seconda del tipo di alieno
 
 ## La Strada
 
@@ -37,6 +36,9 @@ Questo è il percorso che faremo per arrivare al programma finale
 
 1. [pygame Apriamo la finestra disegnando un cannone e suonando la musica](inizio.md)
 2. [Muoviamo il cannone con le frecce e spariamo caon la barra](muovi.md)
-3. [Alieno animato, si sposta e quando colpito scoppia](alieno.md)
+3. [Alieno animato che si sposta](alieno.md)
+4. [Colpisci l'alieno e preparati all'invasione con due alieni](alieno_colpito.md)
+5. [L'invasione](invasione.md)
+6. [Punti e alieni che sparano](punti_spari.md)
 
 * Prossimo: [Sfondo, musica e il nostro cannone](inizio.md) 

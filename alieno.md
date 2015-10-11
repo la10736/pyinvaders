@@ -206,8 +206,8 @@ if muovi_alieno_giu == 0:
 
 ![Tu e l'Alieno](alieno.png)
 
-Ecco co si presenta ora il [gioco](src/alieno.py). L'alieno si muove *elegantemente* e noi possiamo cercare di colpirlo
+Ecco come si presenta ora il [gioco](src/alieno.py). L'alieno si muove *elegantemente* e noi possiamo cercare di colpirlo
 con i nostri spari... ma non succede niente.
 
-* Prossimo: [Colpisci l'alieno e preparati all'invasione](alieno_colpito.md)
+* Prossimo: [Colpisci l'alieno e preparati all'invasione con due alieni](alieno_colpito.md)
 * Precedente: [Muoviamo e Spariamo](muovi.md)
