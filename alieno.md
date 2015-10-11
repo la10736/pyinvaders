@@ -7,7 +7,7 @@ Ora vogliamo inserire il primo alieno, animarlo e farlo muovere per lo schermo. 
 3. A intervalli regolari cambiare l'immagine dell'amieno da disegnare
 3. Cambiare la posizione dell'alieno quando serve per andare a destra, sinistra o in basso
 
-# Caricare le immagini dell'alieno
+## Caricare le immagini dell'alieno
 
 Come potete vedere ci sono 3 tipi di alieni e per ogni alieno ci sono 2 immagini. I nomi delle immagini le trovate nella
 directory del progetto e sono del tipo `alieno_?_?.png` dove nel primo punto interrogativo troviamo il numero 

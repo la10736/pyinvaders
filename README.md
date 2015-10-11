@@ -39,6 +39,6 @@ Questo è il percorso che faremo per arrivare al programma finale
 3. [Alieno animato che si sposta](alieno.md)
 4. [Colpisci l'alieno e preparati all'invasione con due alieni](alieno_colpito.md)
 5. [L'invasione](invasione.md)
-6. [Punti e alieni che sparano](punti_spari.md)
+6. [Conteggio punti e alieni che sparano](punti_spari.md)
 
 * Prossimo: [Sfondo, musica e il nostro cannone](inizio.md) 

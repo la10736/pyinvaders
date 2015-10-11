@@ -23,9 +23,9 @@ pygame.init()
 schermo = pygame.display.set_mode(dimensioni_scehrmo)
 orologio = pygame.time.Clock()
 cannone_immagine = pygame.image.load("cannone.png")
-cannone_rettamgolo = cannone_immagine.get_rect()
-cannone_rettamgolo.centerx = larghezza / 2
-cannone_rettamgolo.bottom = altezza
+cannone_rettangolo = cannone_immagine.get_rect()
+cannone_rettangolo.centerx = larghezza / 2
+cannone_rettangolo.bottom = altezza
 sparo_immagine = pygame.image.load("sparo.png")
 sparo_rettamgolo = sparo_immagine.get_rect()
 alieno_1_immagine = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
@@ -58,8 +58,8 @@ while True:
                 muovi_sinistra = True
             if evento.key == pygame.K_SPACE:
                 if not sparo_in_volo:
-                    sparo_rettamgolo.top = cannone_rettamgolo.top
-                    sparo_rettamgolo.centerx = cannone_rettamgolo.centerx
+                    sparo_rettamgolo.top = cannone_rettangolo.top
+                    sparo_rettamgolo.centerx = cannone_rettangolo.centerx
                     sparo_in_volo = True
         if evento.type == pygame.KEYUP:
             if evento.key == pygame.K_RIGHT:
@@ -84,13 +84,13 @@ while True:
                 alieno_1_rettangolo.centerx = alieno_1_rettangolo.centerx + movimento_alieno_dx_sx
 
     if muovi_destra:
-        cannone_rettamgolo.centerx = cannone_rettamgolo.centerx + VELOCITA
+        cannone_rettangolo.centerx = cannone_rettangolo.centerx + VELOCITA
     if muovi_sinistra:
-        cannone_rettamgolo.centerx = cannone_rettamgolo.centerx - VELOCITA
-    if cannone_rettamgolo.right > larghezza:
-        cannone_rettamgolo.right = larghezza
-    if cannone_rettamgolo.left < 0:
-        cannone_rettamgolo.left = 0
+        cannone_rettangolo.centerx = cannone_rettangolo.centerx - VELOCITA
+    if cannone_rettangolo.right > larghezza:
+        cannone_rettangolo.right = larghezza
+    if cannone_rettangolo.left < 0:
+        cannone_rettangolo.left = 0
 
     if sparo_in_volo:
         sparo_rettamgolo.top = sparo_rettamgolo.top - VELOCITA_SPARO
@@ -98,7 +98,7 @@ while True:
         sparo_in_volo = False
 
     schermo.fill(nero)
-    schermo.blit(cannone_immagine, cannone_rettamgolo)
+    schermo.blit(cannone_immagine, cannone_rettangolo)
     if sparo_in_volo:
         schermo.blit(sparo_immagine, sparo_rettamgolo)
     schermo.blit(alieno_1_immagine[alieno_1_pos_immagine], alieno_1_rettangolo)

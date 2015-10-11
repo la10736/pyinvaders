@@ -1,20 +1,24 @@
 import pygame
 import sys
-import os
+import random
 
 __author__ = 'michele'
 
-
-risorse = os.path.join("..", "risorse")
+FPS = 30
 altezza = 580
 larghezza = 960
 VELOCITA = 5
 VELOCITA_SPARO = 15
+VELOCITA_SPARO_ALIENO = 10
 MUOVI_ALIENI_EVENTO = pygame.USEREVENT + 1
+SPARO_ALIENO_EVENTO = pygame.USEREVENT + 2
+FREQUENZA_SPARI_ALIENI_MILLISECONDI = 2300
 MOVIMENTO_LATERALE_ALIENO = 30
 DISTANZA_LATERALE_ALIENO = MOVIMENTO_LATERALE_ALIENO * 2
 MOVIMENTO_GIU_ALIENO = 15
 DISTANZA_GIU_ALIENO = MOVIMENTO_GIU_ALIENO * 4
+BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI = 1000
+
 
 dimensioni_scehrmo = larghezza, altezza
 nero = 0, 0, 0
@@ -37,10 +41,16 @@ immagini_alieni[1] = pygame.image.load("alieno_2_1.png"), pygame.image.load("ali
 immagini_alieni[2] = pygame.image.load("alieno_2_1.png"), pygame.image.load("alieno_2_2.png")
 immagini_alieni[3] = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
 immagini_alieni[4] = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
+punti_alieni = {0: 40, 1: 20, 2: 20, 3: 10, 4: 10}
 posizione_primo_x = larghezza/2 - DISTANZA_LATERALE_ALIENO * 5
-posizione_primo_y = 90
+posizione_primo_y = 30
 muovi_alieno_giu = 0
 movimento_alieno_dx_sx = MOVIMENTO_LATERALE_ALIENO
+frequenza_movimento_alieni = BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI
+
+spari = []
+immagini_sparo_alieno = pygame.image.load("sparo_alieno_1.png"), pygame.image.load("sparo_alieno_2.png")
+sparo_alieno_pos = 0
 
 pygame.display.set_caption('Space Invaders')
 
@@ -53,24 +63,27 @@ muovi_destra = False
 muovi_sinistra = False
 sparo_in_volo = False
 
-# Ricorda di muovere l'alieno ogni 500 millisendi (0.5 secondi)
-pygame.time.set_timer(MUOVI_ALIENI_EVENTO, 500)
+pygame.time.set_timer(SPARO_ALIENO_EVENTO, random.randint(1, FREQUENZA_SPARI_ALIENI_MILLISECONDI))
 invaso = False
+punti = 0
 
 while not invaso:
     if not alieni:
+        frequenza_movimento_alieni = int(frequenza_movimento_alieni / 4) * 3
+        pygame.time.set_timer(MUOVI_ALIENI_EVENTO, frequenza_movimento_alieni)
         muovi_alieno_giu = 0
         movimento_alieno_dx_sx = MOVIMENTO_LATERALE_ALIENO
         for riga in range(5):
             for colonna in range(11):
                 nuovo_alieno = {}
                 nuovo_alieno["immagini"] = immagini_alieni[riga]
+                nuovo_alieno["punti"] = punti_alieni[riga]
                 nuovo_alieno["rettangolo"] = nuovo_alieno["immagini"][0].get_rect()
                 nuovo_alieno["pos_immagine"] = 0
                 nuovo_alieno["rettangolo"].centerx = posizione_primo_x + colonna * DISTANZA_LATERALE_ALIENO
                 nuovo_alieno["rettangolo"].centery = posizione_primo_y + riga * DISTANZA_GIU_ALIENO
                 alieni.append(nuovo_alieno)
-    orologio.tick(30)
+    orologio.tick(FPS)
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             sys.exit()
@@ -89,6 +102,12 @@ while not invaso:
                 muovi_destra = False
             if evento.key == pygame.K_LEFT:
                 muovi_sinistra = False
+        if evento.type == SPARO_ALIENO_EVENTO:
+            rettangolo_nuovo_sparo_alieno = immagini_sparo_alieno[0].get_rect()
+            alieno_che_spara = random.choice(alieni)
+            rettangolo_nuovo_sparo_alieno.midbottom = alieno_che_spara["rettangolo"].midbottom
+            spari.append(rettangolo_nuovo_sparo_alieno)
+            pygame.time.set_timer(SPARO_ALIENO_EVENTO, random.randint(1, FREQUENZA_SPARI_ALIENI_MILLISECONDI))
         if evento.type == MUOVI_ALIENI_EVENTO:
             for alieno in alieni:
                 alieno["pos_immagine"] = alieno["pos_immagine"] + 1
@@ -131,6 +150,18 @@ while not invaso:
                 sparo_in_volo = False
                 bang.play()
                 alieni.remove(alieno)
+                punti = punti + alieno["punti"]
+
+    sparo_alieno_pos = sparo_alieno_pos + 1
+    if sparo_alieno_pos > 1:
+        sparo_alieno_pos = 0
+    for sparo_alieno in spari:
+        if sparo_alieno.top > altezza:
+            spari.remove(sparo_alieno)
+        if sparo_alieno.colliderect(cannone_rettangolo):
+            spari.remove(sparo_alieno)
+            print("CANNONE COLPITO")
+        sparo_alieno.bottom = sparo_alieno.bottom + VELOCITA_SPARO_ALIENO
 
     schermo.fill(nero)
     schermo.blit(cannone_immagine, cannone_rettangolo)
@@ -138,6 +169,13 @@ while not invaso:
         schermo.blit(sparo_immagine, sparo_rettamgolo)
     for alieno in alieni:
         schermo.blit(alieno["immagini"][alieno["pos_immagine"]], alieno["rettangolo"])
+    for sparo_alieno in spari:
+        schermo.blit(immagini_sparo_alieno[sparo_alieno_pos], sparo_alieno)
+    font = pygame.font.SysFont(None, 48)
+    testo_punti = font.render(str(punti), 1, bianco)
+    punti_rettangolo = testo_punti.get_rect()
+    punti_rettangolo.topleft = 30, 5
+    schermo.blit(testo_punti, punti_rettangolo)
     pygame.display.flip()
 
 pygame.mixer.music.stop()

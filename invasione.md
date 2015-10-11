@@ -208,6 +208,8 @@ font = pygame.font.SysFont(None, 96)
 testo = font.render('GAME OVER', 1, bianco)
 ```
 
+... dove `bianco` lo abbiamo definito sotto a `nero` con `bianco = 255, 255, 255`
+
 Prendiamo il solito rettangolo e posizioniamolo al centro e disegniamolo:
 
 ```python
@@ -244,5 +246,5 @@ posizione_primo_y = 30
 
 Ora è quasi [completo](src/invasione.py). Mancano solo gli spari degli alieni, i punti e alcuni dettagli.
 
-* Prossimo: [Punti e alieni che sparano](punti_spari.md)
+* Prossimo: [Conteggio punti e alieni che sparano](punti_spari.md)
 * Precedente: [Colpisci l'alieno e preparati all'invasione con due alieni](alieno_colpito.md)
