@@ -247,8 +247,8 @@ succedendo.
 
 Gli altri punti da cambiare sono:
 
-# Dove controlliamo se lo sparo ha colpito l'alieno
-# Dove disegniamo gli alieni
+* Dove controlliamo se lo sparo ha colpito l'alieno
+* Dove disegniamo gli alieni
 
 ### Il secondo alieno
 
