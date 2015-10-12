@@ -155,7 +155,7 @@ Se facciamo questo prima di iniziare il ciclo main di `pygame` allora la musica 
 ## Dove siamo adesso
 
 Ora il vostro programma dovrebbe essere molto simile a [questo](src/inizio.py). Abbiamo una finestra con il cannone in 
-basso al centro. Una musica inquietante ci accompagna e se chiudiamo la finestra il programma si chiude.
+basso al centro. Una musica squillante e divertente ci accompagna e se chiudiamo la finestra il programma si chiude.
 
 * Prossimo: [Muoviamo e Spariamo](muovi.md)
 * Precedente: [README](README.md)
