@@ -55,7 +55,7 @@ nuovo_sparo_alieno = False
 pygame.display.set_caption('Space Invaders')
 
 pygame.mixer.music.load("videogame2.mp3")
-pygame.mixer.music.set_volume(0.3)
+pygame.mixer.music.set_volume(0.2)
 pygame.mixer.music.play(-1, 0.0)
 bang = pygame.mixer.Sound('bang.wav')
 bang.set_volume(1)
