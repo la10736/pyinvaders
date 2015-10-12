@@ -6,21 +6,19 @@ non la chiudiamo con il nostro cannone fermo in basso al centro e una musica di 
 ## Una bella finestra nera
 
 Per prima cosa creiamo semplicemente il campo di gioco che consiste in una finestra nera dal nome *Space Invaders* 
-larga 640 pixels (punti) e alta 480.
+larga 960 pixels (punti) e alta 580.
 
 ```python
-import pygame
+ALTEZZA = 580
+LARGHEZZA = 960
+DIMENSIONI_SCHERMO = LARGHEZZA, ALTEZZA
+NERO = 0, 0, 0
 
-altezza = 480
-larghezza = 640
-
-dimensioni_scehrmo = larghezza, altezza
-nero = 0, 0, 0
 pygame.init()
 
 pygame.display.set_caption('Space Invaders')
 
-schermo = pygame.display.set_mode(dimensioni_scehrmo)
+schermo = pygame.display.set_mode(DIMENSIONI_SCHERMO)
 schermo.fill(nero)
 pygame.display.flip()
 ```
@@ -46,24 +44,26 @@ precisione il prossimo colpo di bacchetta.
 orologio = pygame.time.Clock()
 while True:
     # Chiediamo all'orologio di aspettare fino al prossimo colpo di 
-    # bacchetta e di fare 20 colpi di bacchetta al secondo
-    orologio.tick(20)
+    # bacchetta e di fare 30 colpi di bacchetta al secondo
+    orologio.tick(30)
     Il lavoro da fare prima di aspettare il prossimo tocco
 ```
 
 Questi colpi si chiamano **frame** (fotogrammi), come in un film noi disegnamo tante foto da mostrare una dopo l'altra
-con un ritmo di 20 al secondo. Quindi in ogni **frame** dobbiamo ridisegnare il nostro schermo:
+con un ritmo di 30 al secondo. Quindi in ogni **frame** dobbiamo ridisegnare il nostro schermo:
 
 ```python
+FPS = 30
+
 orologio = pygame.time.Clock()
 while True:
-    orologio.tick(20)
+    orologio.tick(FPS)
     schermo.fill(nero)
     pygame.display.flip()
 ```    
 
 Ed ecco che la nostra finestra non si chiude più... ma proprio più :). Provate con il quadrato rosso in basso a sinistra
-che dovrebbe uccidere il programma.
+che dovrebbe uccidere il programma. Ho chiamato `FPS` il numerp di colpti di bacchetta ( **F**rames **P**er **S**econds)
 
 ## Comunicare con un programma pygame
 
@@ -96,8 +96,8 @@ riempire il rettangolo l'immagine. Troppe parole: facciamo spazio al codice:
 ```python
 cannone_immagine = pygame.image.load("cannone.png")
 cannone_rettamgolo = cannone_immagine.get_rect()
-cannone_rettamgolo.centerx = larghezza / 2
-cannone_rettamgolo.bottom = altezza
+cannone_rettamgolo.centerx = LARGHEZZA / 2
+cannone_rettamgolo.bottom = ALTEZZA
 
 ...
    # Prima di riempire il display
@@ -112,28 +112,28 @@ Ci sono anche altre proprietà del rettangolo, ma quelle segnate nel disegno bas
 questo è il valore che hanno tutti gli attributi del rettangolo dopo averlo posizionato in basso al centro:
 
 ```
-cannone_rettamgolo x : 294
-cannone_rettamgolo y : 448
-cannone_rettamgolo top : 448
-cannone_rettamgolo left : 294
-cannone_rettamgolo bottom : 480
-cannone_rettamgolo right : 346
-cannone_rettamgolo topleft : (294, 448)
-cannone_rettamgolo bottomleft : (294, 480)
-cannone_rettamgolo topright : (346, 448)
-cannone_rettamgolo bottomright : (346, 480)
-cannone_rettamgolo midtop : (320, 448)
-cannone_rettamgolo midleft : (294, 464)
-cannone_rettamgolo midbottom : (320, 480)
-cannone_rettamgolo midright : (346, 464)
-cannone_rettamgolo center : (320, 464)
-cannone_rettamgolo centerx : 320
-cannone_rettamgolo centery : 464
-cannone_rettamgolo size : (52, 32)
-cannone_rettamgolo width : 52
-cannone_rettamgolo height : 32
-cannone_rettamgolo w : 52
-cannone_rettamgolo h : 32
+cannone_rettamgolo.x : 454
+cannone_rettamgolo.y : 548
+cannone_rettamgolo.top : 548
+cannone_rettamgolo.left : 454
+cannone_rettamgolo.bottom : 580
+cannone_rettamgolo.right : 506
+cannone_rettamgolo.topleft : (454, 548)
+cannone_rettamgolo.bottomleft : (454, 580)
+cannone_rettamgolo.topright : (506, 548)
+cannone_rettamgolo.bottomright : (506, 580)
+cannone_rettamgolo.midtop : (480, 548)
+cannone_rettamgolo.midleft : (454, 564)
+cannone_rettamgolo.midbottom : (480, 580)
+cannone_rettamgolo.midright : (506, 564)
+cannone_rettamgolo.center : (480, 564)
+cannone_rettamgolo.centerx : 480
+cannone_rettamgolo.centery : 564
+cannone_rettamgolo.size : (52, 32)
+cannone_rettamgolo.width : 52
+cannone_rettamgolo.height : 32
+cannone_rettamgolo.w : 52
+cannone_rettamgolo.h : 32
 ```
 
 ## Musica Maestro
@@ -142,7 +142,8 @@ Vogliamo mettere un bel tappetino musicale alle nostre partite. Per fare questo 
 e madarla in play dicendogli di farla continuamente.
 
 ```python
-pygame.mixer.music.load("quake.mp3")
+pygame.mixer.music.load("videogame2.mp3")
+pygame.mixer.music.set_volume(0.2)
 pygame.mixer.music.play(-1, 0.0)
 ```
 

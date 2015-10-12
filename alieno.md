@@ -64,7 +64,7 @@ Per prima cosa posizioniamo l'alieno e disegniamolo sullo schermo usando la prim
 mettere l'alieno a 30 pixels dal soffitto e al centro dello schermo :
 
 ```python
-alieno_1_rettangolo.center = larghezza/2, 30
+alieno_1_rettangolo.center = LARGHEZZA/2, 30
 schermo.blit(alieno_1_immagine[0], alieno_1_rettangolo)
 ```
 
@@ -106,8 +106,9 @@ per cui dobbiamo inserire queste righe:
 
 ```python
 MUOVI_ALIENI_EVENTO = pygame.USEREVENT + 1
+BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI = 1000
 ...
-pygame.time.set_timer(MUOVI_ALIENI_EVENTO, 500)
+pygame.time.set_timer(MUOVI_ALIENI_EVENTO, BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI)
 ...
 if evento.type == MUOVI_ALIENI_EVENTO:
     alieno_1_pos_immagine = alieno_1_pos_immagine + 1
@@ -117,7 +118,7 @@ if evento.type == MUOVI_ALIENI_EVENTO:
 
 Dove 
 
-1. La prima riga la mettiamo in alto dove abbiamo messo tutti i numeri fissi come `VELOCITA_SPARO`
+1. Il primo gruppo lo mettiamo in alto dove abbiamo messo tutti i numeri fissi come `VELOCITA_SPARO`
 2. La funzione `set_timer()` prima di iniziare il ciclo main di `pygame`
 3. Il resto dove guardiamo gli eventi della tastiera ... ricordatevi di togliere il vecchio cambio di immagine
 
@@ -131,7 +132,7 @@ Ogni volta che l'alieno cambia immagine si muove. Si può muovere a destra, a si
 Per ora facciamo solo il movimento a destra e sinistra e poi metteremo il movimento in basso. Ogni alieno si muove in un
 passo a destra o sinistra di `25` pixels.
 
-Per cui abbiamo un `MOVIMENTO_LATERALE_ALIENO = 25` da mettere all'inizio e muovere il rettangolo dell'alieno ogni volta
+Per cui abbiamo un `MOVIMENTO_LATERALE_ALIENO = 30` da mettere all'inizio e muovere il rettangolo dell'alieno ogni volta
 che avviene un evento `MUOVI_ALIENI_EVENTO` di `MOVIMENTO_LATERALE_ALIENO` se andiano a destra e 
 `-MOVIMENTO_LATERALE_ALIENO` se andiamo a sinistra. Ma facciamo le cose per gradi e muoviamoci solo a destra. Ogni volta
 che accade `MUOVI_ALIENI_EVENTO` eseguiamo:

@@ -1,31 +1,31 @@
 import pygame
 import sys
-import os
 
 __author__ = 'michele'
 
-
-risorse = os.path.join("..", "risorse")
-altezza = 500
-larghezza = 800
+FPS = 30
+ALTEZZA = 580
+LARGHEZZA = 960
+DIMENSIONI_SCHERMO = LARGHEZZA, ALTEZZA
 VELOCITA = 5
-VELOCITA_SPARO = 10
+VELOCITA_SPARO = 15
 MUOVI_ALIENI_EVENTO = pygame.USEREVENT + 1
-MOVIMENTO_LATERALE_ALIENO = 25
+MOVIMENTO_LATERALE_ALIENO = 30
 MOVIMENTO_GIU_ALIENO = 15
+BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI = 1000
 
-dimensioni_scehrmo = larghezza, altezza
-nero = 0, 0, 0
+NERO = 0, 0, 0
+
 movimento_alieno_dx_sx = MOVIMENTO_LATERALE_ALIENO
 
 pygame.init()
 
-schermo = pygame.display.set_mode(dimensioni_scehrmo)
+schermo = pygame.display.set_mode(DIMENSIONI_SCHERMO)
 orologio = pygame.time.Clock()
 cannone_immagine = pygame.image.load("cannone.png")
 cannone_rettangolo = cannone_immagine.get_rect()
-cannone_rettangolo.centerx = larghezza / 2
-cannone_rettangolo.bottom = altezza
+cannone_rettangolo.centerx = LARGHEZZA / 2
+cannone_rettangolo.bottom = ALTEZZA
 sparo_immagine = pygame.image.load("sparo.png")
 sparo_rettamgolo = sparo_immagine.get_rect()
 alieni = []
@@ -33,33 +33,34 @@ nuovo_alieno = {}
 nuovo_alieno["immagini"] = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
 nuovo_alieno["rettangolo"] = nuovo_alieno["immagini"][0].get_rect()
 nuovo_alieno["pos_immagine"] = 0
-nuovo_alieno["rettangolo"].center = larghezza/2, 30
+nuovo_alieno["rettangolo"].center = LARGHEZZA/2, 30
 alieni.append(nuovo_alieno)
 nuovo_alieno = {}
 nuovo_alieno["immagini"] = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
 nuovo_alieno["rettangolo"] = nuovo_alieno["immagini"][0].get_rect()
 nuovo_alieno["pos_immagine"] = 0
-nuovo_alieno["rettangolo"].center = larghezza/2 + 50, 30
+nuovo_alieno["rettangolo"].center = LARGHEZZA/2 + 60, 30
 alieni.append(nuovo_alieno)
 
 muovi_alieno_giu = 0
 
 pygame.display.set_caption('Space Invaders')
 
-pygame.mixer.music.load("quake.mp3")
+pygame.mixer.music.load("videogame2.mp3")
+pygame.mixer.music.set_volume(0.2)
 pygame.mixer.music.play(-1, 0.0)
 bang = pygame.mixer.Sound('bang.wav')
-bang.set_volume(0.2)
+bang.set_volume(1)
 
 muovi_destra = False
 muovi_sinistra = False
 sparo_in_volo = False
 
 # Ricorda di muovere l'alieno ogni 500 millisendi (0.5 secondi)
-pygame.time.set_timer(MUOVI_ALIENI_EVENTO, 500)
+pygame.time.set_timer(MUOVI_ALIENI_EVENTO, BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI)
 
 while True:
-    orologio.tick(20)
+    orologio.tick(FPS)
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             sys.exit()
@@ -84,7 +85,7 @@ while True:
                 if alieno["pos_immagine"] > 1:
                     alieno["pos_immagine"] = 0
                 if muovi_alieno_giu == 0:
-                    if alieno["rettangolo"].right + movimento_alieno_dx_sx > larghezza:
+                    if alieno["rettangolo"].right + movimento_alieno_dx_sx > LARGHEZZA:
                         movimento_alieno_dx_sx = -MOVIMENTO_LATERALE_ALIENO
                         muovi_alieno_giu = 2
                     if alieno["rettangolo"].left + movimento_alieno_dx_sx < 0:
@@ -102,8 +103,8 @@ while True:
         cannone_rettangolo.centerx = cannone_rettangolo.centerx + VELOCITA
     if muovi_sinistra:
         cannone_rettangolo.centerx = cannone_rettangolo.centerx - VELOCITA
-    if cannone_rettangolo.right > larghezza:
-        cannone_rettangolo.right = larghezza
+    if cannone_rettangolo.right > LARGHEZZA:
+        cannone_rettangolo.right = LARGHEZZA
     if cannone_rettangolo.left < 0:
         cannone_rettangolo.left = 0
 
@@ -117,7 +118,7 @@ while True:
                 bang.play()
                 alieni.remove(alieno)
 
-    schermo.fill(nero)
+    schermo.fill(NERO)
     schermo.blit(cannone_immagine, cannone_rettangolo)
     if sparo_in_volo:
         schermo.blit(sparo_immagine, sparo_rettamgolo)

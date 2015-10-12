@@ -37,8 +37,8 @@ if muovi_destra:
     cannone_rettamgolo.centerx = cannone_rettamgolo.centerx + VELOCITA
 if muovi_sinistra:
     cannone_rettamgolo.centerx = cannone_rettamgolo.centerx - VELOCITA
-if cannone_rettamgolo.right > larghezza:
-    cannone_rettamgolo.right = larghezza
+if cannone_rettamgolo.right > LARGHEZZA:
+    cannone_rettamgolo.right = LARGHEZZA
 if cannone_rettamgolo.left < 0:
     cannone_rettamgolo.left = 0
 ```
@@ -99,7 +99,7 @@ Per quello a sinistra vi basta usare `pygame.K_LEFT` per modificare `muovi_sinis
 ## Lo Sparo
 
 Lo sparo parte dal centro del cannone e si muove verso l'alto con una certa velocità che chimeremo 
-`VELOCITA_SPARO = 10`. Quando esce fuori dallo schermo sparisce (non viene più disegnato). Ci può essere solo uno sparo 
+`VELOCITA_SPARO = 15`. Quando esce fuori dallo schermo sparisce (non viene più disegnato). Ci può essere solo uno sparo 
 alla volta. Prima di collegare lo sparo alla barra della tastiera facciamo che lo sparo parte subito e quando sparisce 
 riparte.
 

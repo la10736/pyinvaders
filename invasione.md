@@ -46,7 +46,7 @@ Per fare gli 11 alieni useremo `for numero_alieno in range(11)`.... provate sull
 Quindi per fare i nostri alieni usiamo
 
 ```python
-posizione_primo_x = larghezza/2 - DISTANZA_LATERALE_ALIENO * 5
+posizione_primo_x = LARGHEZZA/2 - DISTANZA_LATERALE_ALIENO * 5
 posizione_primo_y = 30
 for colonna in range(11):
     nuovo_alieno = {}
@@ -205,16 +205,16 @@ Costruiamo la scritta con:
 
 ```python
 font = pygame.font.SysFont(None, 96)
-testo = font.render('GAME OVER', 1, bianco)
+testo = font.render('GAME OVER', 1, BIANCO)
 ```
 
-... dove `bianco` lo abbiamo definito sotto a `nero` con `bianco = 255, 255, 255`
+... dove `BIANcO` lo abbiamo definito sotto a `NERO` con `BIANCO = 255, 255, 255`
 
 Prendiamo il solito rettangolo e posizioniamolo al centro e disegniamolo:
 
 ```python
 testo_rettangolo = testo.get_rect()
-testo_rettangolo.center = (larghezza/2, altezza/2)
+testo_rettangolo.center = (LARGHEZZA/2, ALTEZZA/2)
 schermo.blit(testo, testo_rettangolo)
 pygame.display.flip()
 ```
@@ -223,7 +223,7 @@ E iniziamo un semplice ciclo main per aspettare che il gioco venga chiuso:
 
 ```python
 while True:
-    orologio.tick(20)
+    orologio.tick(FPA)
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             sys.exit()

@@ -55,7 +55,7 @@ volte che colpiamo l'alieno usiamo la funzione `bang.play()` per suonarlo:
 
 ```python
 bang = pygame.mixer.Sound('bang.wav')
-bang.set_volume(0.2)
+bang.set_volume(1)
 ...
 bang.play()
 ```
@@ -212,7 +212,7 @@ nuovo_alieno = {}
 nuovo_alieno["immagini"] = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
 nuovo_alieno["rettangolo"] = nuovo_alieno["immagini"][0].get_rect()
 nuovo_alieno["pos_immagine"] = 0
-nuovo_alieno["rettangolo"].center = larghezza/2, 30
+nuovo_alieno["rettangolo"].center = LARGHEZZA/2, 30
 alieni.append(nuovo_alieno)
 ```
 
@@ -260,12 +260,12 @@ nuovo_alieno = {}
 nuovo_alieno["immagini"] = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
 nuovo_alieno["rettangolo"] = nuovo_alieno["immagini"][0].get_rect()
 nuovo_alieno["pos_immagine"] = 0
-nuovo_alieno["rettangolo"].center = larghezza/2 + 50, 30
+nuovo_alieno["rettangolo"].center = LARGHEZZA/2 + 60, 30
 alieni.append(nuovo_alieno)
 ```
 
 ... Uguale al primo ma in una posizione diversa spostata di 50 pixels: 
-`nuovo_alieno["rettangolo"].center = larghezza/2 + 50, 30`
+`nuovo_alieno["rettangolo"].center = LARGHEZZA/2 + 60, 30`
 
 Adesso sono comparsi due alieni e quando uno dei due tocca il bordo scendono e si muovono dall'altra parte.
 

@@ -45,7 +45,7 @@ in alto a sinistra:
 
 ```python
     font = pygame.font.SysFont(None, 48)
-    testo_punti = font.render(str(punti), 1, bianco)
+    testo_punti = font.render(str(punti), 1, BIANCO)
     punti_rettangolo = testo_punti.get_rect()
     punti_rettangolo.topleft = 30, 5
     schermo.blit(testo_punti, punti_rettangolo)
@@ -82,20 +82,34 @@ sparo_alieno_pos = 0
 
 ### 3 Far partire lo sparo quando si preme il tasto **A** e posizionarlo
 
-Aggiungere tra gli eventi
+Aggiungere all'inizion del programma
 
 ```python
-if evento.type == pygame.KEYDOWN and evento.key == ord("a"):
+import random
+```
+
+Prima del ciclo main
+
+```python
+nuovo_sparo_alieno = False
+```
+
+tra gli eventi dopo `if evento.type == pygame.KEYDOWN:`
+
+```python
+if evento.key == ord("a"):
+    nuovo_sparo_alieno = True
+```
+
+Prina di disegnare e muovere
+
+```python
+if nuovo_sparo_alieno:
+    nuovo_sparo_alieno = False
     rettangolo_nuovo_sparo_alieno = immagini_sparo_alieno[0].get_rect()
     alieno_che_spara = random.choice(alieni)
     rettangolo_nuovo_sparo_alieno.midbottom = alieno_che_spara["rettangolo"].midbottom
     spari.append(rettangolo_nuovo_sparo_alieno)
-```
-
-... all'inizio del programma
-
-```python
-import random
 ```
 
 ### 4 Alternare le immagini da disegnare
@@ -142,28 +156,26 @@ FREQUENZA_SPARI_ALIENI_MILLISECONDI = 2300
 pygame.time.set_timer(SPARO_ALIENO_EVENTO, random.randint(1, FREQUENZA_SPARI_ALIENI_MILLISECONDI))
 ...
 if evento.type == SPARO_ALIENO_EVENTO:
-    ...
+    nuovo_sparo_alieno = True
     pygame.time.set_timer(SPARO_ALIENO_EVENTO, random.randint(1, FREQUENZA_SPARI_ALIENI_MILLISECONDI))
 ```
 
 Dove il primo pezzo va allinizio del programma, il secondo dove impostavamo il timer del movimento, 
-`if evento.type == SPARO_ALIENO_EVENTO` sostituisce la verifica del tasto **A** e il nuovo timer dopo aver aggiunto
-lo sparo.
+`if evento.type == SPARO_ALIENO_EVENTO` sostituisce/si aggiunge alla verifica del tasto **A** e il nuovo timer 
+dopo aver aggiunto lo sparo.
 
 ## Accelerare gli alieni
 
 Per accelerare gli alieni è sufficiente diminuire il tempo con il quale viene creato l'evento di movimento:
 
 ```python
-BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI = 1000
-...
 frequenza_movimento_alieni = BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI
 ...
 frequenza_movimento_alieni = int(frequenza_movimento_alieni / 4) * 3
 pygame.time.set_timer(MUOVI_ALIENI_EVENTO, frequenza_movimento_alieni)
 ```
 
-La prima riga all'inizio, la seconda prima del ciclo main di `pygame` e l'ultimo blocco tutte le volte che ricostruiamo 
+La prima riga va messa prima del ciclo main di `pygame` e l'ultimo blocco tutte le volte che ricostruiamo 
 gli alieni.
 
 ## Dove siamo adesso
