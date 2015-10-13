@@ -11,7 +11,7 @@ vitrtualenv nuovo, i passi sono i seguenti (testati su ubuntu 15.4)
 
 ```
 sudo apt-get build-dep python-pygame
-sudo apt-get install python-dev
+sudo apt-get install python-dev python3-dev
 mkdir -p ~/.virtualenvs/pygame
 sudo apt-get install python-virtualenv
 virtualenv --no-site-packages --distribute -p /usr/bin/python3.4 ~/.virtualenvs/pygame
