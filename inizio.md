@@ -9,7 +9,7 @@ Per prima cosa creiamo semplicemente il campo di gioco che consiste in una fines
 larga 960 pixels (punti) e alta 580.
 
 ```python
-ALTEZZA = 580
+ALTEZZA = 700
 LARGHEZZA = 960
 DIMENSIONI_SCHERMO = LARGHEZZA, ALTEZZA
 NERO = 0, 0, 0
@@ -113,22 +113,22 @@ questo è il valore che hanno tutti gli attributi del rettangolo dopo averlo pos
 
 ```
 cannone_rettamgolo.x : 454
-cannone_rettamgolo.y : 548
-cannone_rettamgolo.top : 548
+cannone_rettamgolo.y : 668
+cannone_rettamgolo.top : 668
 cannone_rettamgolo.left : 454
-cannone_rettamgolo.bottom : 580
+cannone_rettamgolo.bottom : 700
 cannone_rettamgolo.right : 506
-cannone_rettamgolo.topleft : (454, 548)
-cannone_rettamgolo.bottomleft : (454, 580)
-cannone_rettamgolo.topright : (506, 548)
-cannone_rettamgolo.bottomright : (506, 580)
-cannone_rettamgolo.midtop : (480, 548)
-cannone_rettamgolo.midleft : (454, 564)
-cannone_rettamgolo.midbottom : (480, 580)
-cannone_rettamgolo.midright : (506, 564)
-cannone_rettamgolo.center : (480, 564)
+cannone_rettamgolo.topleft : (454, 668)
+cannone_rettamgolo.bottomleft : (454, 700)
+cannone_rettamgolo.topright : (506, 668)
+cannone_rettamgolo.bottomright : (506, 700)
+cannone_rettamgolo.midtop : (480, 668)
+cannone_rettamgolo.midleft : (454, 684)
+cannone_rettamgolo.midbottom : (480, 700)
+cannone_rettamgolo.midright : (506, 684)
+cannone_rettamgolo.center : (480, 684)
 cannone_rettamgolo.centerx : 480
-cannone_rettamgolo.centery : 564
+cannone_rettamgolo.centery : 684
 cannone_rettamgolo.size : (52, 32)
 cannone_rettamgolo.width : 52
 cannone_rettamgolo.height : 32

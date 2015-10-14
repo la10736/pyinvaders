@@ -5,7 +5,7 @@ import random
 __author__ = 'michele'
 
 FPS = 30
-ALTEZZA = 580
+ALTEZZA = 700
 LARGHEZZA = 960
 DIMENSIONI_SCHERMO = LARGHEZZA, ALTEZZA
 VELOCITA = 5

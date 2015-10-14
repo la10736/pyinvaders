@@ -40,5 +40,6 @@ Questo è il percorso che faremo per arrivare al programma finale
 4. [Colpisci l'alieno e preparati all'invasione con due alieni](alieno_colpito.md)
 5. [L'invasione](invasione.md)
 6. [Conteggio punti e alieni che sparano](punti_spari.md)
+7. [Solo 3 cannoni](3_cannoni.md)
 
 * Prossimo: [Sfondo, musica e il nostro cannone](inizio.md) 
