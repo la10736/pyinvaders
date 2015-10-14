@@ -162,6 +162,42 @@ Ora così fa quello che deve fare solo che `spara` non serve più a molto, potet
 nell'evento il lavoro che facevo quando spara è vero. Se preferite toglietelo come ho fatto io, ma se non vi da fastidio 
 lasciatelo pure.
 
+## Una Piccola pausa: La Struttura
+
+Il nostro programma inizia a avere una **STRUTTURA** precisa. Analizziamola che ci potrà aiutare dopo:
+
+```python
+...
+FPS = 30
+ALTEZZA = 700
+# COSTANTI
+... Nomi in maiuscolo per riconoscerli
+NERO = 0, 0, 0
+
+pygame.init()
+
+# INIZIALIZZAZIONE
+... Chiamate di funzioni e variabili in minuscolo 
+
+while True:
+    # CICLO MAIN
+    orologio.tick(FPS)
+    for evento in pygame.event.get():
+        # EVENTI
+        ... Gestione degli eventi : riconoscono gli eventi e impostano lo stato per le azzioni
+    
+    # LOGICA
+    --- Logica del programma. Qui si eseguono i movimenti e si controlla la logica
+    if muovi_destra:
+    
+    # DISEGNO
+    schermo.fill(NERO)
+    ... Da quì in poi si eseguono i disegni
+
+# CHIUSURA
+... Finisce il coclo while.... forse faremo qualcosa prima di chiudere
+```
+
 ## Dove siamo adesso
 
 ![Muovi e Spara](muovi_spara.png)
