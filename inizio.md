@@ -69,7 +69,7 @@ che dovrebbe uccidere il programma. Ho chiamato `FPS` il numerp di colpti di bac
 
 Per capire cosa sta facendo il giocatore, i programmi `pygame` devono *ascoltare e reagire a quello che succede*. Quello
 che succede sono pressione di tasti, movimenti del mouse, click ... richieste di chiusura della finestra. Siamo noi che
-dobbiamo istruire il nostro gioco a fa¶e la cosa giusta quando succede qualcosa.
+dobbiamo istruire il nostro gioco a fare la cosa giusta quando succede qualcosa.
 
 Quindi ora diremo che quando qualcuno vuole chiudere il programma bisogna uscire. Per fare questo bisogna analizzare 
 tutti gli eventi che arrivano e se troviamo una richiesta di uscita uscire:
@@ -148,7 +148,7 @@ pygame.mixer.music.play(-1, 0.0)
 ```
 
 `pygame.mixer.music` è lo speciale modulo che gestisce la musica di sottofondo e il primo argomento di `play()` è il 
-numero di volte che vogliamo riprodurre la canzone: `-1` signigica indefinitivamente.
+numero di volte che vogliamo riprodurre la canzone: `-1` signigica ripeterla per sempre.
 
 Se facciamo questo prima di iniziare il ciclo main di `pygame` allora la musica ci accomagnerà sempre.
 

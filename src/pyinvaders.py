@@ -68,6 +68,7 @@ boom.set_volume(1)
 muovi_destra = False
 muovi_sinistra = False
 sparo_in_volo = False
+spara = False
 
 pygame.time.set_timer(SPARO_ALIENO_EVENTO, random.randint(1, FREQUENZA_SPARI_ALIENI_MILLISECONDI))
 invaso = False
@@ -102,9 +103,7 @@ while not invaso and cannoni > 0:
                 muovi_sinistra = True
             if evento.key == pygame.K_SPACE:
                 if not sparo_in_volo:
-                    sparo_rettamgolo.top = cannone_rettangolo.top
-                    sparo_rettamgolo.centerx = cannone_rettangolo.centerx
-                    sparo_in_volo = True
+                    spara = True
         if evento.type == pygame.KEYUP:
             if evento.key == pygame.K_RIGHT:
                 muovi_destra = False
@@ -144,6 +143,11 @@ while not invaso and cannoni > 0:
         if alieno["rettangolo"].bottom >= ALTEZZA or alieno["rettangolo"].colliderect(cannone_rettangolo):
             invaso = True
 
+    if spara:
+        sparo_rettamgolo.top = cannone_rettangolo.top
+        sparo_rettamgolo.centerx = cannone_rettangolo.centerx
+        sparo_in_volo = True
+        spara = False
     if sparo_in_volo:
         sparo_rettamgolo.top = sparo_rettamgolo.top - VELOCITA_SPARO
         if sparo_rettamgolo.bottom < 0:

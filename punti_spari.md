@@ -1,7 +1,7 @@
 # Conteggio punti e alieni che sparano
 
-Ci occupiamo adesso di contare i punti, far sparare gli alieni e accelerare il movimento degli alieni ogni volta che li 
-distruggiamo tutti che vengono ricostruiti.
+Ci occupiamo adesso di contare i punti, far sparare gli alieni e accelerare il movimento degli alieni ogni volta che
+vengono ricostruiti.
 
 ## Contare i punti
 
@@ -25,8 +25,8 @@ Ora tutte le volte che creiamo un alieno dobbiamo indicare anche quanti punti va
 nuovo_alieno["punti"] = punti_alieni[riga]
 ```
 
-Adesso iniziamo impostando `punti = 0` alla partenza e ogni volta che un alieno viene colpito sommiamo i punti che vale
-proprio sotto a `alieni.remove(alieno)`
+Adesso iniziamo impostando `punti = 0` nella inizializzazione e ogni volta che un alieno viene colpito sommiamo i punti 
+che vale proprio sotto a `alieni.remove(alieno)`
 
 ```python
 punti = 0
@@ -40,8 +40,8 @@ Ora per verificare se tutto funziona ogni volta che aumentiamo i punti scriviamo
 print("PUNTI :" + str(punti))
 ```
 
-Adesso, dopo aver disegnato gli alieni e prima di ridisegnare lo schermo con `pygame.display.flip()` disegniamo i punti 
-in alto a sinistra:
+Ci manca solo di scrivere i punti in alto a sinistra. Nella zona dei disegni, prima di `pygame.display.flip()`,
+disegniamo i punti con
 
 ```python
     font = pygame.font.SysFont(None, 48)
@@ -51,28 +51,30 @@ in alto a sinistra:
     schermo.blit(testo_punti, punti_rettangolo)
 ```
 
-e togliamo la vecchia stampa dei punti che non serve più.
+e togliamo la vecchio `print("PUNTI :" + str(punti))` che non serve più.
 
 ## Gli spari degli alieni
 
-Gli spari degli alieni partono a caso. Quindi gli spari possono essere tanti (una lista come per gli alieni) esono 
+Gli spari degli alieni partono a caso. Quindi gli spari possono essere tanti (una lista come gli alieni) e sono 
 fatti di due immagini (come gli alieni). A differenza degli alieni tra i diversi spari cambia solo il rettangolo e 
 quindi mettiamo solo quello nella lista.
 
-Per provare gli spari invece di farli generare a caso usiamo un bottone: la lettera **A**.
+Per provare gli spari invece di farli creare a caso usiamo un bottone: la lettera **A**.
  
 Andiamo con ordine. Ci servono:
 
-1. `VELOCITA_SPARO_ALIENO = 10` che mettiamo sopra
-2. Fare la lista di spari, caricare le immagini dello sparo e fissare il numero dell'immagine da mostrare
+1. `VELOCITA_SPARO_ALIENO = 10` che mettiamo trale costanti
+2. Fare la lista di spari, caricare le immagini dello sparo e fissare il numero dell'immagine da mostrare 
+(inizializzazione)
 3. Far partire lo sparo (aggiungere un rettangolo alla lista) quando si preme il tasto **A** e posizionarlo su un alieno
-4. A ogni frame alternare le immagini da disegnare
-5. A ogni frame muovere tutti gli spari e verificare quelli da rimuovere o che colpiscono il cannone
-6. Disegnare gli spari
+(eventi)
+4. A ogni frame alternare le immagini da disegnare (logica)
+5. A ogni frame muovere tutti gli spari e verificare quelli da rimuovere o che colpiscono il cannone (logica)
+6. Disegnare gli spari (disegno)
 
 ### 2 Fare la lista di spari, caricare le immagini dello sparo e fissare il numero dell'immagine da mostrare
 
-Prima del ciclo main di `pygame`
+Nella parte di inizzializzazione:
 
 ```python
 spari = []
@@ -82,26 +84,26 @@ sparo_alieno_pos = 0
 
 ### 3 Far partire lo sparo quando si preme il tasto **A** e posizionarlo
 
-Aggiungere all'inizion del programma
+In alto, prima delle costanti e dove ci sono altri `import`
 
 ```python
 import random
 ```
 
-Prima del ciclo main
+Zona inizializzazione
 
 ```python
 nuovo_sparo_alieno = False
 ```
 
-tra gli eventi dopo `if evento.type == pygame.KEYDOWN:`
+Nella gestione degli eventi dentro `if evento.type == pygame.KEYDOWN:`
 
 ```python
 if evento.key == ord("a"):
     nuovo_sparo_alieno = True
 ```
 
-Prina di disegnare e muovere
+Inizio delle logica
 
 ```python
 if nuovo_sparo_alieno:
@@ -114,7 +116,7 @@ if nuovo_sparo_alieno:
 
 ### 4 Alternare le immagini da disegnare
     
-Prima di iniziare a disegnare
+In fondo alla logica e prima di disegnare
 
 ```python
 sparo_alieno_pos = sparo_alieno_pos + 1
@@ -124,7 +126,7 @@ if sparo_alieno_pos > 1:
 
 ### 5 muovere tutti gli spari e verificare quelli da rimuovere
 
-Prima di iniziare a disegnare
+Nella logica
 
 ```python
 for sparo_alieno in spari:
@@ -138,7 +140,7 @@ for sparo_alieno in spari:
 
 ### 6 Disegnare gli spari
 
-Prima di iniziare a disegnare
+Dove disegnamo
 
 ```python
 for sparo_alieno in spari:
@@ -146,7 +148,7 @@ for sparo_alieno in spari:
 ```
 
 
-Ora cambiamo lo sparo creato con il bottone **A** con un evento casuale. Per fare questo creiamo un nuovo evento come 
+Ora cambiamo lo sparo creato con il bottone **A** con un evento casuale. Per fare questo definiamo un nuovo evento come 
 abbiamo fatto per il movimento degli alieni solo che cambiamo l'intervallo ogni volta con un numero casuale:
 
 ```python
@@ -160,8 +162,8 @@ if evento.type == SPARO_ALIENO_EVENTO:
     pygame.time.set_timer(SPARO_ALIENO_EVENTO, random.randint(1, FREQUENZA_SPARI_ALIENI_MILLISECONDI))
 ```
 
-Dove il primo pezzo va allinizio del programma, il secondo dove impostavamo il timer del movimento, 
-`if evento.type == SPARO_ALIENO_EVENTO` sostituisce/si aggiunge alla verifica del tasto **A** e il nuovo timer 
+Dove il primo pezzo va tra le costanti, il secondo dove nell'inizializzazione, 
+`if evento.type == SPARO_ALIENO_EVENTO` negli eventi sostituisce/aggiunto alla verifica del tasto **A** e il nuovo timer 
 dopo aver aggiunto lo sparo.
 
 ## Accelerare gli alieni
@@ -169,14 +171,16 @@ dopo aver aggiunto lo sparo.
 Per accelerare gli alieni è sufficiente diminuire il tempo con il quale viene creato l'evento di movimento:
 
 ```python
+BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI = 1000
+...
 frequenza_movimento_alieni = BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI
 ...
 frequenza_movimento_alieni = int(frequenza_movimento_alieni / 4) * 3
 pygame.time.set_timer(MUOVI_ALIENI_EVENTO, frequenza_movimento_alieni)
 ```
 
-La prima riga va messa prima del ciclo main di `pygame` e l'ultimo blocco tutte le volte che ricostruiamo 
-gli alieni.
+La prima riga va messa tra le costanti, la seconda nell'inizializzazione e l'ultimo blocco tutte le volte che 
+ricostruiamo gli alieni (inizio della logica).
 
 ## Dove siamo adesso
 

@@ -47,7 +47,7 @@ Quindi per fare i nostri alieni usiamo
 
 ```python
 posizione_primo_x = LARGHEZZA/2 - DISTANZA_LATERALE_ALIENO * 5
-posizione_primo_y = 30
+posizione_primo_y = 90
 for colonna in range(11):
     nuovo_alieno = {}
     nuovo_alieno["immagini"] = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
@@ -126,8 +126,9 @@ comando del tipo `if not alieni:`. Provate sulla console
 vuota
 ```
 
-Quindi se **spostiamo** il ciclo dove aggiungiamo gli alieni dentro al ciclo main di `pygame` e controlliamo prima se
-la lista è vuota otteniamo proprio quello che vogliamo. ... **SOLO PER PROVARE FATE UN SOLO ALIENO PER RIGA**
+Quindi se **spostiamo** il ciclo dove aggiungiamo gli alieni all'inizio della logica (frntro al ciclo main di `pygame`)
+controllando prima se la lista è vuota otteniamo proprio quello che vogliamo. ... 
+**SOLO PER PROVARE FATE UN SOLO ALIENO PER RIGA**
 
 ```python
 while True:
@@ -159,7 +160,7 @@ In questa maniera possiamo provare semplicemente quando tocca il terreno o il ca
 ![Provare Vittoria Alieni](due_colonne.png)
 
 Per capire se stiamo toccando il pavimento ci basta verificare se `alieno["rettangolo"].bottom >= altezza` e per
-vedere se il cannone e l'alino si toccano con `alieno["rettangolo"].colliderect(cannone_rettamgolo)` otteniamo quello 
+vedere se il cannone e l'aleino si toccano con `alieno["rettangolo"].colliderect(cannone_rettamgolo)` otteniamo quello 
 che vogliamo. Quindi:
 
 ```python
@@ -193,7 +194,7 @@ invaso = True
 
 Ora il gioco esce improvvisamente.
 
-## Stamapre Game Over e attendere che il gioco venga chiuso
+## GAME OVER e attendere che il gioco venga chiuso
 
 Alla fine del ciclo main di `pygame` fermiamo la musica con:
 

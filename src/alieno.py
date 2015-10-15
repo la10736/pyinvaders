@@ -47,6 +47,7 @@ pygame.mixer.music.play(-1, 0.0)
 muovi_destra = False
 muovi_sinistra = False
 sparo_in_volo = False
+spara = False
 
 # Ricorda di muovere l'alieno ogni 500 millisendi (0.5 secondi)
 pygame.time.set_timer(MUOVI_ALIENI_EVENTO, BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI)
@@ -63,9 +64,7 @@ while True:
                 muovi_sinistra = True
             if evento.key == pygame.K_SPACE:
                 if not sparo_in_volo:
-                    sparo_rettamgolo.top = cannone_rettangolo.top
-                    sparo_rettamgolo.centerx = cannone_rettangolo.centerx
-                    sparo_in_volo = True
+                    spara = True
         if evento.type == pygame.KEYUP:
             if evento.key == pygame.K_RIGHT:
                 muovi_destra = False
@@ -97,6 +96,11 @@ while True:
     if cannone_rettangolo.left < 0:
         cannone_rettangolo.left = 0
 
+    if spara:
+        sparo_rettamgolo.top = cannone_rettangolo.top
+        sparo_rettamgolo.centerx = cannone_rettangolo.centerx
+        sparo_in_volo = True
+        spara = False
     if sparo_in_volo:
         sparo_rettamgolo.top = sparo_rettamgolo.top - VELOCITA_SPARO
     if sparo_rettamgolo.bottom < 0:

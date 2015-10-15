@@ -42,7 +42,7 @@ immagini_alieni[3] = pygame.image.load("alieno_1_1.png"), pygame.image.load("ali
 immagini_alieni[4] = pygame.image.load("alieno_1_1.png"), pygame.image.load("alieno_1_2.png")
 punti_alieni = {0: 40, 1: 20, 2: 20, 3: 10, 4: 10}
 posizione_primo_x = LARGHEZZA/2 - DISTANZA_LATERALE_ALIENO * 5
-posizione_primo_y = 30
+posizione_primo_y = 90
 muovi_alieno_giu = 0
 movimento_alieno_dx_sx = MOVIMENTO_LATERALE_ALIENO
 frequenza_movimento_alieni = BASE_FREQUENZA_MOVIMENTO_ALIENI_MILLISECONDI
@@ -63,6 +63,7 @@ bang.set_volume(1)
 muovi_destra = False
 muovi_sinistra = False
 sparo_in_volo = False
+spara = False
 
 pygame.time.set_timer(SPARO_ALIENO_EVENTO, random.randint(1, FREQUENZA_SPARI_ALIENI_MILLISECONDI))
 invaso = False
@@ -97,9 +98,7 @@ while not invaso:
                 muovi_sinistra = True
             if evento.key == pygame.K_SPACE:
                 if not sparo_in_volo:
-                    sparo_rettamgolo.top = cannone_rettangolo.top
-                    sparo_rettamgolo.centerx = cannone_rettangolo.centerx
-                    sparo_in_volo = True
+                    spara = True
         if evento.type == pygame.KEYUP:
             if evento.key == pygame.K_RIGHT:
                 muovi_destra = False
@@ -147,6 +146,11 @@ while not invaso:
         if alieno["rettangolo"].bottom >= ALTEZZA or alieno["rettangolo"].colliderect(cannone_rettangolo):
             invaso = True
 
+    if spara:
+        sparo_rettamgolo.top = cannone_rettangolo.top
+        sparo_rettamgolo.centerx = cannone_rettangolo.centerx
+        sparo_in_volo = True
+        spara = False
     if sparo_in_volo:
         sparo_rettamgolo.top = sparo_rettamgolo.top - VELOCITA_SPARO
         if sparo_rettamgolo.bottom < 0:

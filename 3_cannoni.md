@@ -1,7 +1,6 @@
 # Solo 3 Cannoni
 
-Il gioco è orami completo manca verificare che se il cannone viene colpito 3 volte interromepere il gioco. 
-Procediamo così:
+Il gioco è ormai completo, manca l'interruzione del gioco se il cannone viene colpito 3 volte. Procediamo così:
 
 1. Impostare il numero massimo di cannoni a 3 e diminuirli ogni volta che viene colpito
 2. Quando il numero di cannoni è zero **GAME OVER**
@@ -10,7 +9,7 @@ Procediamo così:
 
 ## Cannone Colpito
 
-Dobbiamo segnare il numro massimo di cannoni e diminuirli di uno tutte le volte che il cannone viene colpito.:
+Dobbiamo segnare il numero massimo di cannoni e diminuirli di uno tutte le volte che il cannone viene colpito.:
 
 ```python
 CANNONI_INIZIALI = 3
@@ -22,13 +21,13 @@ print("CANNONE COLPITO. Rimasti " + str(cannoni))
 ```
 
 * Il primo lo mettiamo in alto insieme alle altre costanti
-* La seconda prima del ciclo main di `pygame`
-* il terzo gruppo lo mettiamo al posto di `print("CANNONE COLPITO")`
+* La seconda nell'inizializzazione
+* il terzo gruppo lo mettiamo al posto di nella logica al posto di `print("CANNONE COLPITO")`
 
 ## GAME OVER
 
-Il nostro ciclo main di `pygame` viene eseguito fintanto che è falso invaso... Dobbiamo verificare anche che ci siano 
-ancora cannoni.
+Il nostro ciclo main di `pygame` viene eseguito solo se `invaso` è falso... Dobbiamo verificare anche che ci siano 
+ancora cannoni, altrimenti anche in questo caso la partita è finita.
 
 Basta sostituire `while not invaso:` con
 
@@ -49,11 +48,11 @@ for i in range(cannoni - 1):
     schermo.blit(cannone_immagine, cannone_extra_rettangolo)
 ```
 
-Tutto questo dove disegniamo.
+Tutto questo nella zona dei disegni.
 
 ## BOOM!
 
-Per lo scoppio carichiamo 2 immagini e un suono:
+Per lo scoppio carichiamo 2 immagini e un suono nelle inizializzazioni:
 ```python
 cannone_boom_immagini = pygame.image.load("esplosione_1.png"), pygame.image.load("esplosione_2.png")
 ...
@@ -86,7 +85,7 @@ ben centrata sul cannone**.
 
 Per risoverlo fatevi questa domanda: **Quando disegno l'esplosione il rettangolo è proprio dove è il cannone?**.
 
-Controllate quindi **dove** spostate il cannone e vedete se riuscite a fare diversamente.
+Controllate quindi **quando nel programma** spostate il cannone e vedete se riuscite a fare diversamente.
 
 ## Fine
 

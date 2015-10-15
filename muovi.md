@@ -1,12 +1,12 @@
 # Muoviamo e Spariamo
 
-Quello che dobbiamo fare quì è spostare l'astronave non le frecce destra e sinistra. Inoltre quando si preme la barra 
+Quello che dobbiamo fare quì è spostare l'astronave con le freccie destra e sinistra. Inoltre quando si preme la barra 
 un bello sparo partirà dalla nostra astronave per muoversi fino alla fine della finestra.
 
 ## Muovere il cannone
 
-Ora cerchiamo solo di muovere il cannone senza doverlo controllare con i tasti. Ammettiamo solo di sapere che 
-`muovi_destra` è vero e facciamo muovere il cannone.
+Ora cerchiamo solo di muovere il cannone senza doverlo controllare con i tasti. Se `muovi_destra` è vero per muovere
+il cannone possiamo usare:
 
 ```python
 if muovi_destra:
@@ -19,7 +19,7 @@ muovi_destra = True
 ```
 
 Vedrete il vostro cannone muoversi a destra e scomparire dallo schermo... si **scomparire**. Per evitare che non 
-scompaia dobbiamo verificare che la parte destra del rettangolo non vada oltre alle dimensioni dello schermo:
+scompaia dobbiamo fare in modo che di non muoverci oltre alle dimensioni dello schermo:
 
 ```python
 if cannone_rettamgolo.right > larghezza:
@@ -28,9 +28,9 @@ if cannone_rettamgolo.right > larghezza:
 
 Per il movimento a sinistra fate la stessa cosa usando `muovi_sinistra` e togliendo `5` a `centerx` invece di 
 aumentarlo. Potete anche chiamare `VELOCITA = 5` e usare `VELOCITA`. **ATTENZIONE** Non è più la destra che esce dallo 
-scermo ma la sinistra e uscire vuol dire diventare m inore di 0.
+scermo ma la sinistra e uscire vuol dire diventare m inore di `0`.
 
-Dovreste avere circa questo codice
+Dovreste avere scritto circa questa roba
 
 ```python
 if muovi_destra:
@@ -56,7 +56,7 @@ usando il campo `key` di event.
 
 Prima di scrivere il programma che muove facciamone uno che quando si preme la ferccia a destra stampa la scritta 
 `"FRECCIA DESTRA"` con `print`: quando guardiamo gli eventi con `for evento in pygame.event.get()` dobbiamo aggiungere 
-le seguenti righe:
+questo:
 
 ```python
 if evento.type == pygame.KEYDOWN:
@@ -80,7 +80,7 @@ Fortunatamente qualcuno ha tradotto i numeri in manira facile da scrivere nel pr
 275
 ```
 
-Quindi ci basta che quando si preme `pygame.K_RIGHT` `muovi_destra` diventa vero, quando si rilascia `muovi_destra`
+Quindi quando `pygame.K_RIGHT` è premuto `muovi_destra` diventa vero, quando è rilasciato `muovi_destra`
 diventa falso:
 
 ```python
@@ -132,8 +132,8 @@ if sparo_rettamgolo.bottom < 0:
     spara = True
 ```
 
-Infine quando `spara` è vero bisogna posizionare lo il rettangolo dello al centro del cannone dentro la punta, dire che
-`sparo_in_volo` deiventa vero e dire che `sparo` ora è falso.
+Infine quando `spara` è vero bisogna metterlo al centro del cannone dentro la punta, dire che `sparo_in_volo` diventa 
+vero e dire che `sparo` ora è falso.
 
 ```python
 if spara:
@@ -143,7 +143,7 @@ if spara:
     sparo_in_volo = True
 ```
 
-Se avete messe tutto al posto giusto potete provare ... ma fini a che non inizalizzate `spara` a `True` non succederà 
+Se avete messe tutto al posto giusto potete provare ... ma fino a che non inizalizzate `spara` a `True` non succederà 
 niente, provate a metterlo e vedrete i vostri spari volare.
 
 ### Lo sparo parte quando vogliamo noi
@@ -157,10 +157,6 @@ if evento.key == pygame.K_SPACE:
     if not sparo_in_volo:
         spara = True
 ```
-
-Ora così fa quello che deve fare solo che `spara` non serve più a molto, potete lasciarla, ma io l'ho rimossa mettendo
-nell'evento il lavoro che facevo quando spara è vero. Se preferite toglietelo come ho fatto io, ma se non vi da fastidio 
-lasciatelo pure.
 
 ## Una Piccola pausa: La Struttura
 

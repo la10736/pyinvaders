@@ -1,7 +1,7 @@
 # Colpisci l'alieno e preparati all'invasione con due alieni
 
-Ora abbiamo un cannone che muoviamo e un alieno che si muove da solo. Il nostro cannone può sparare, ma anche se
-colpisce l'alienon non succede nulla.
+Ora muoviamo un cannone e un alieno sta tentando di raggiungere la terra. Il nostro cannone può sparare, ma anche se
+colpisce l'alieno non succede nulla.
 
 Quello che vogliamo riuscire a fare è 
 
@@ -50,7 +50,7 @@ if sparo_in_volo:
 ## BANG!
 
 Colpiamo l'alieno e sentiamo bang! Per sentire bang bisogna caricare il suono con 
-`bang = pygame.mixer.Sound('bang.wav')` e impostare il volume con `bang.set_volume(0.2)`, adesso tutte le 
+`bang = pygame.mixer.Sound('bang.wav')` e impostare il volume con `bang.set_volume(1)`, adesso tutte le 
 volte che colpiamo l'alieno usiamo la funzione `bang.play()` per suonarlo:
 
 ```python
@@ -60,8 +60,8 @@ bang.set_volume(1)
 bang.play()
 ```
  
-Dove il primo pezzo lo facciamo una volta per tutte prima del ciclo main e `bang.play()` tutte le volte che lo sparo 
-colpisce l'alieno.
+Dove il primo pezzo lo facciamo una volta nell'inizializzazione e `bang.play()` tutte le volte che lo sparo 
+colpisce l'alieno (nella parte di logica).
 
 ## Un po di ordine
 
@@ -70,12 +70,12 @@ fare tanti altri nomi nuovi come `alieno_1_immagine`, `alieno_1_rettangolo` e `a
 provare a farne tanti altri, ma diventa un lavoro lungo e noioso.
 
 Se leggiamo bene i nomi possiamo dire che `immagine`, `rettangolo` e `pos_immagine` sono tutti *attributi* dell'alieno.
-In *Python* esiste una cosa molto semplice per contenere le cose usando dei nomi e si chiama **dizzionario**.
+In *Python* si possono usare i **dizzionari** per ordinare le cose semplicemente in base ai nomi.
 
 ### Dizzionario
 
-Lasciamo per un attimo da parte il nostro programma e cerchiamo di capire questo concetto. I dizzionari di Python 
-assomigliano molto ai dizzionari normali: si scrive sul dizzionario che una una parola ( *stringa* ) ha un significato
+Lasciamo per un attimo da parte il nostro programma e cerchiamo di capire cosa sono i dizzionari. I dizzionari di Python 
+assomigliano molto ai dizzionari normali: si scrive sul dizzionario che una parola ( *stringa* ) ha un dato significato
 e tutte le volte che si vuole leggere il significato basta aprire il dizzionario e leggerlo.
 
 Vediamo come funzionano:
@@ -123,7 +123,7 @@ alieno["rettangolo"] = alieno_1_immagine[0].get_rect()
 ```
 
 Ora in tutto il programma al posto di `alieno_1_rettangolo` sostituite `alieno["rettangolo"]`... Potete farvi aiutare 
-trova/sostituisci (*Find/Replace*) che trovate sopra a dove scrivete il programma.
+trova/sostituisci ( *Find/Replace* ) che trovate sopra a dove scrivete il programma.
 
 ![Find/Replace](replace.png)
 
@@ -264,7 +264,7 @@ nuovo_alieno["rettangolo"].center = LARGHEZZA/2 + 60, 30
 alieni.append(nuovo_alieno)
 ```
 
-... Uguale al primo ma in una posizione diversa spostata di 50 pixels: 
+... Uguale al primo ma in una posizione diversa spostata di 60 pixels: 
 `nuovo_alieno["rettangolo"].center = LARGHEZZA/2 + 60, 30`
 
 Adesso sono comparsi due alieni e quando uno dei due tocca il bordo scendono e si muovono dall'altra parte.
